@@ -3,7 +3,7 @@
 #include <cmath>
 #include <fstream>
 
-std::size_t points(double const& c)
+auto points(double const& c)
 {
 	constexpr double z_0 = 0.;
 
@@ -29,7 +29,7 @@ int main()
 	constexpr double dc = 0.01;
 
 	while(c < 1.) {
-		std::size_t control = points(c);
+		auto control = points(c);
 
 		if(control == 1001) {
 			numbers.push_back(c);
