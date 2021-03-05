@@ -14,7 +14,7 @@ e' limitata.
 sudo apt-get install g++ libsfml-dev
 cd mandelbrot/complexset
 g++ -c mandelbrot_c.cpp
-g++ mandelbrot.o -o mandelbrot -lsfml-graphics -lsfml-window -lsfml-system
+g++ mandelbrot_c.o -o mandelbrot -lsfml-graphics -lsfml-window -lsfml-system
 ./mandelbrot
 ```
 ## Risultati
