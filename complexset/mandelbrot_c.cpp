@@ -26,10 +26,10 @@ int main()
   std::ofstream fout {"data.txt"};
   std::vector<std::complex<double>> numbers {};
 
-  for(int i{}; i != 300; ++i) {
-    double rho = static_cast<double>(i) / 100;
-    for(int j{}; j != 360; ++j) {
-      double theta = j * DEGTORAD;
+  for(int i{}; i != 3000; ++i) {
+    double rho = static_cast<double>(i) / 1000;
+    for(int j{}; j != 2880; ++j) {
+      double theta = j * DEGTORAD / 8;
       std::complex<double> c = std::polar(rho, theta);
       auto control = points(c);
       if(control == 1001) {
