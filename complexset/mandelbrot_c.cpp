@@ -1,7 +1,6 @@
 #include <complex>
 #include <vector>
 #include <cmath>
-#include <tuple>
 
 #include <SFML/Graphics.hpp>
 
@@ -57,7 +56,7 @@ int main()
   settings.antialiasingLevel = 8;
   sf::RenderWindow window(sf::VideoMode(window_width, window_height), "Mandelbrot Set", sf::Style::Default, settings);
 
-  auto to_window_frame = [](Point const &p) {
+  auto to_window_frame = [](Point const& p) {
     constexpr auto x_scale = window_width / (point_max_x - point_min_x);
     constexpr auto y_scale = window_height / (point_max_y - point_min_y);
     return sf::Vector2f((p.x - point_min_x) * x_scale, window_height - (p.y - point_min_y) * y_scale);
