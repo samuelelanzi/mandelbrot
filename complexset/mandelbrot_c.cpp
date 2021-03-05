@@ -55,7 +55,7 @@ int main()
 
   sf::ContextSettings settings;
   settings.antialiasingLevel = 8;
-  sf::RenderWindow window(sf::VideoMode(window_width, window_height), "SIR Model", sf::Style::Default, settings);
+  sf::RenderWindow window(sf::VideoMode(window_width, window_height), "Mandelbrot Set", sf::Style::Default, settings);
 
   auto to_window_frame = [](Point const &p) {
     constexpr auto x_scale = window_width / (point_max_x - point_min_x);
@@ -66,7 +66,7 @@ int main()
   if (window.isOpen()) {
     window.clear(sf::Color::Black);
 
-    for (auto const &p : set) {
+    for (auto const& p : set) {
       constexpr auto radius = 4.;
       sf::CircleShape c{radius};
       c.setFillColor(sf::Color::Blue);
