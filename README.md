@@ -18,6 +18,6 @@ g++ mandelbrot_c.o -o mandelbrot -lsfml-graphics -lsfml-window -lsfml-system
 ./mandelbrot
 ```
 ## Risultati
-![complexset](https://github.com/samuelelanzi/mandelbrot/blob/main/complexset/images/mandelbrot.png)
+![complexset](https://github.com/samuelelanzi/mandelbrot/blob/main/complexset/images/mandelbrot_set.png)
 
 Nella figura e' rappresentato l'insieme di Mandelbrot ottenuto dal codice.
