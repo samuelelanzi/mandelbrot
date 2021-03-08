@@ -1,6 +1,6 @@
+#include <cmath>
 #include <complex>
 #include <vector>
-#include <cmath>
 
 #include <SFML/Graphics.hpp>
 
@@ -17,7 +17,7 @@ auto points(std::complex<double> const& c) noexcept
 
   for(int i{}; i != 1e3; ++i) {
     std::complex<double> result = std::pow(v_z.back(), 2) + c;
-    if(result.real() > 1e6) {
+    if(result.real() > 1e9) {
       break;
     }
     v_z.push_back(result);
@@ -34,23 +34,9 @@ int main()
   constexpr double point_max_x = 1.;
   constexpr double point_min_y = -1.5;
   constexpr double point_max_y = 1.5;
+  constexpr auto radius = 0.5;
 
   constexpr double DEGTORAD = 2 * M_PI / 360;
-
-  std::vector<Point> set {};
-
-  for(int i{}; i != 300; ++i) {
-    double rho = static_cast<double>(i) / 100;
-    for(int j{}; j != 360; ++j) {
-      double theta = j * DEGTORAD;
-      std::complex<double> c = std::polar(rho, theta);
-      auto control = points(c);
-      if(control == 1001) {
-        Point p_i {c.real(), c.imag()};
-        set.push_back(p_i);
-      }
-    }
-  }
 
   sf::ContextSettings settings;
   settings.antialiasingLevel = 8;
@@ -64,14 +50,21 @@ int main()
 
   if (window.isOpen()) {
     window.clear(sf::Color::Black);
-
-    for (auto const& p : set) {
-      constexpr auto radius = 4.;
-      sf::CircleShape c{radius};
-      c.setFillColor(sf::Color::Blue);
-      c.setOrigin(sf::Vector2f{radius, radius});
-      c.move(to_window_frame(p));
-      window.draw(c);
+    for(int i{}; i != 3000; ++i) {
+      double rho = static_cast<double>(i) / 1000;
+      for(int j{}; j != 2880; ++j) {
+        double theta = j * DEGTORAD / 8;
+        std::complex<double> c = std::polar(rho, theta);
+        auto control = points(c);
+        if(control == 1001) {
+          Point p {c.real(), c.imag()};
+          sf::CircleShape c{radius};
+          c.setFillColor(sf::Color::Cyan);
+          c.setOrigin(sf::Vector2f{radius, radius});
+          c.move(to_window_frame(p));
+          window.draw(c);
+        }
+      }
     }
 
     window.display();
